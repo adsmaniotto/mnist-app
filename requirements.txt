@@ -1,0 +1,5 @@
+flask
+numpy
+Pillow
+tensorflow-cpu==2.1.0
+Werkzeug

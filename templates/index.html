@@ -1,0 +1,13 @@
+<html>
+   <head>
+     <meta charset="UTF-8">
+     <title>MNIST App - ADSmaniotto</title>
+   </head>
+   <body>
+      <form action = "{{ url_for('run_prediction') }}" method = "POST"
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+      </form>
+   </body>
+</html>
