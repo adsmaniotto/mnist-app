@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import logging
 import PIL
-from tensorflow.keras.models import model_from_json
+from tensorflow.keras.models import model_from_json, Sequential
 
 from model.predict import make_prediction, reshape_img_upload
 
@@ -13,7 +13,7 @@ class InvalidFormatException(Exception):
     pass
 
 
-def load_mnist_model():
+def load_mnist_model() -> Sequential:
     json_file = open('model/model.json', 'r')
     model_json = json_file.read()
     json_file.close()
@@ -27,7 +27,7 @@ def upload_image(file):
 
 
 @app.route('/')
-def upload_file():
+def render_html():
     return render_template('index.html')
 
 
@@ -39,7 +39,7 @@ def health():
 
 
 @app.route('/upload', methods=['POST'])
-def run_prediction():
+def run_prediction() -> str:
     try:
         img = upload_image(request.files['file'].stream)
     except PIL.UnidentifiedImageError:
