@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import logging
 import PIL
 from tensorflow.keras.models import model_from_json
+
 from model.utils import reshape_img_upload, upload_image
 
 app = Flask(__name__, template_folder='templates')
